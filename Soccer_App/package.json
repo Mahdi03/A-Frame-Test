@@ -1,0 +1,1 @@
+{"name":"com.aymanstudios.soccer","version":"1.0.0","displayName":"Soccer","cordova":{"platforms":["android"]},"dependencies":{"cordova-android":"~7.1.4"}}
