@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <a-scene>
+    <a-scene vr-mode-ui="enabled: false">
         <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
         <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
         <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
@@ -17,9 +17,8 @@
         <a-plane position="0 0 0" rotation="-90 0 0" width="73" height="110" color="#208a06">
         </a-plane>
         <a-plane position="0 0.1 0" rotation="-90 0 0" width="73" height="0.25" color="#FFFFFF"></a-plane>
-        <a-entity camera="" wasd-controls="" position="0 1.6 5" look-controls="pointerLockEnabled:true;hmdEnabled:false;" aframe-injected="" data-aframe-inspector-original-camera="" vive-controls="model:false;rotationOffset:90" oculus-touch-controls="model:false;rotationOffset:90"
-            windows-motion-controls="hand:left;model:false;" vr-mode-ui="enabled:false;"></a-entity>
-        <a-sky color="#61bafa"></a-sky>
+        <a-camera wasd-controls position="0 1.6 5" look-controls="pointerLockEnabled:true;hmdEnabled:false;"></a-entity>
+            <a-sky color="#61bafa"></a-sky>
     </a-scene>
 </body>
 
