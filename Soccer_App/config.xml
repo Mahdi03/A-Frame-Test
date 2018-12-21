@@ -2,12 +2,12 @@
 <widget id="com.aymanstudios.soccer" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Soccer</name>
     <description>
-        A-Frame Test Application for Android.
+        A-Frame Soccer Test Application for Android.
     </description>
     <author email="mahdiayman048@outlook.com" href="https://aymanstudios.com">
         Ayman Studios - DaMahdi03
     </author>
-    <content src="index.html" />
+    <content src="menu.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
     <access origin="*" />
