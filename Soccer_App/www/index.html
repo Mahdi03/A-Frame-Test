@@ -11,7 +11,7 @@
 
 <body>
 
-    <a-scene vr-mode-ui="enabled: false" keyboard-shortcuts="enterVR: false" physics="debug: false">
+    <a-scene vr-mode-ui="enabled: false" keyboard-shortcuts="enterVR: false" physics="debug: false; restitution: 0.5">
         <a-sphere id="soccerBall" velocity="0 1 1" position="0 1.25 -5" radius="0.3" color="#EF2E5E" dynamic-body="shape: sphere"></a-sphere>
         <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#000099" dynamic-body></a-cylinder>
         <!--Soccer Field-->

@@ -8,6 +8,7 @@
     ]
   },
   "dependencies": {
+    "aframe-extras": "^5.0.0",
     "aframe-physics-system": "^3.3.0",
     "cordova-android": "~7.1.4"
   }
