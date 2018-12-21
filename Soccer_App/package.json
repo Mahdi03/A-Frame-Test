@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "aframe-extras": "^5.0.0",
+    "aframe-fps-counter-component": "^1.0.1",
+    "aframe-map": "^2.1.1",
     "aframe-physics-system": "^3.3.0",
     "cordova-android": "~7.1.4"
   }

@@ -1,0 +1,51 @@
+body {
+    background-color: rgb(80, 80, 80);
+    width: 100%;
+    color: white;
+    padding: 0;
+    margin: 0 auto;
+}
+
+header {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 15px;
+    background-color: rgb(50, 50, 50);
+    border-bottom: 5px solid rgb(19, 165, 255);
+    margin-bottom: 15px;
+}
+
+button {
+    width: 100%;
+    color: rgb(80, 80, 80);
+    font-size: 25px;
+    padding: 20px;
+    border: 3px dashed lightseagreen;
+    border-radius: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#mainMenu {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+/*Convert Currency Page*/
+
+select {
+    font-size: 20px;
+}
+
+input[type=number] {
+    font-size: 20px;
+    width: 135px;
+}
+
+
+/*About Page*/
+
+p {
+    font-size: 20px;
+}
