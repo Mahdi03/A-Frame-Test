@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>A-Frame Soccer</title>
     <meta name="description" content="A-Frame Soccer">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/theme.css" rel="stylesheet" />
     <script src="components/aframe.min.js"></script>
     <script src="components/aframe-physics-system.min.js"></script>
 </head>
@@ -43,6 +45,8 @@
                     document.querySelector("#soccerBall").setAttribute("position", "0 1.25 -5");
                 }
             };
+            AFRAME.scenes[0].exitVRBound();
+            AFRAME.scenes[0].exitVRTrueBound();
         </script>
     </a-scene>
 </body>
