@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>A-Frame Soccer</title>
+    <meta name="description" content="A-Frame Soccer">
+    <script src="components/aframe.min.js"></script>
+    <script src="components/aframe-physics-system.min.js"></script>
+</head>
+
+<body>
+    <a-scene vr-mode-ui="enabled: false" keyboard-shortcuts="enterVR: false" physics="debug: true">
+        <a-sphere position="0 1.25 -5" radius="0.5" color="#EF2E5E" dynamic-body="shape: sphere"></a-sphere>
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#000099" dynamic-body></a-cylinder>
+        <!--Soccer Field-->
+        <a-plane position="0 0 0" rotation="-90 0 0" width="73" height="110" color="#208a06" static-body></a-plane>
+        <a-plane position="0 0.1 0" rotation="-90 0 0" width="73" height="0.25" color="#FFFFFF" static-body></a-plane>
+        <a-plane position="0 0.001 0" rotation="0 0 0" width="73" height="0.25" color="#FFFFFF" static-body></a-plane>
+        <a-camera wasd-controls="acceleration: 100" position="0 1.6 5" look-controls="pointerLockEnabled:true;hmdEnabled:false" static-body>
+            <a-box rotation="0 0 0" color="#4CC3D9" static-body></a-box>
+        </a-camera>
+        <a-sky color="#61bafa"></a-sky>
+    </a-scene>
+</body>
+
+</html>
