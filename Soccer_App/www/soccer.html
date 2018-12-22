@@ -25,7 +25,6 @@
         registerAframeMap(window.AFRAME);
 
         function checkBall() {
-            console.log("hello");
             var ballPos = document.querySelector("#soccerBall").object3D.position;
             if (ballPos.y < -15) {
                 resetBall();
@@ -96,7 +95,7 @@
             <a-cylinder position="0 0 -40" rotation="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF" static-body></a-cylinder>
         </a-entity>
         <a-camera wasd-controls="acceleration: 200" position="0 1.6 5" look-controls="pointerLockEnabled:true;hmdEnabled:false" static-body>
-            <a-entity id="scoreBoard" position="0 0.75 -1"></a-entity>
+            <a-entity id="scoreBoard" position="0 0.75 -1" scale="2 2 2"></a-entity>
             <a-box material="color: #4CC3D9; opacity: 0; transparent: true; visible: false" position="0 -1.6 -1" rotation="0 0 0" scale="3 4 3" static-body></a-box>
             <a-map position="0 0 0"></a-map>
         </a-camera>
