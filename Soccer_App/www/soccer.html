@@ -10,7 +10,6 @@
     <script src="components/aframe.min.js"></script>
     <script src="components/aframe-physics-system.min.js"></script>
     <script src="components/aframe-map.min.js"></script>
-    <script src="components/aframe-fps-counter-component.min.js"></script>
 </head>
 
 <body>
@@ -32,21 +31,23 @@
                 resetBall();
             } else if (ballPos.z < -55) {
                 if (ballPos.x < 20 && ballPos.x > -20) {
-                    team2.points++;
-                    console.log("Team #2 Scored A Point, they now have " + team2.points + " points!!! Hooray for them!!");
-                    resetBall();
-                } else {
-                    ballPos.setZ(-55);
-                    console.log("Moved Soccer Ball To Rear Touch Line");
-                }
-            } else if (ballPos.z > 55) {
-                if (ballPos.x < 20 && ballPos.x > -20) {
                     team1.points++;
                     console.log("Team #1 Scored A Point, they now have " + team1.points + " points!!! Hooray for them!!");
                     resetBall();
+                    updateScoreBoard();
+                } else {
+                    ballPos.setZ(-55);
+                    console.log("Moved Soccer Ball To Front Touch Line");
+                }
+            } else if (ballPos.z > 55) {
+                if (ballPos.x < 20 && ballPos.x > -20) {
+                    team2.points++;
+                    console.log("Team #2 Scored A Point, they now have " + team2.points + " points!!! Hooray for them!!");
+                    resetBall();
+                    updateScoreBoard();
                 } else {
                     ballPos.setZ(55);
-                    console.log("Moved Soccer Ball To Front Touch Line");
+                    console.log("Moved Soccer Ball To Rear Touch Line");
                 }
             }
 
@@ -57,6 +58,7 @@
     <a-scene vr-mode-ui="enabled: false" keyboard-shortcuts="enterVR: false" physics="debug: false; restitution: 0.5">
         <a-sphere id="soccerBall" velocity="0 1 1" position="0 0 -5" radius="0.3" color="#EF2E5E" dynamic-body="shape: sphere"></a-sphere>
         <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#000099" dynamic-body></a-cylinder>
+        <a-entity text="value: Hello World;"></a-entity>
         <!--Soccer Field-->
         <a-entity>
             <a-plane position="0 -0.0001 0" rotation="-90 0 0" width="73" height="150" color="#208a06" static-body></a-plane>
@@ -68,7 +70,10 @@
             <a-plane position="0 0.01 55" rotation="-90 0 0" width="73" height="0.25" color="#FFFFFF" static-body></a-plane>
             <!--Center Circle-->
             <a-circle position="0 0.01 0" rotation="-90 0 0" radius="9.15" color="" static-body></a-circle>
-
+            <!--Penalty Mark (Front)-->
+            <a-circle position="0 0.01 -44" rotation="-90 0 0" radius="0.5" color="" static-body></a-circle>
+            <!--Penalty Mark (Back)-->
+            <a-circle position="0 0.01 44" rotation="-90 0 0" radius="0.5" color="" static-body></a-circle>
             <a-plane position="0 0.001 10" rotation="-90 0 0" width="73" height="0.25" color="#ABCCCC" static-body></a-plane>
 
             <!--Right Wall-->
@@ -91,7 +96,8 @@
             <a-cylinder position="0 0 -40" rotation="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF" static-body></a-cylinder>
         </a-entity>
         <a-camera wasd-controls="acceleration: 200" position="0 1.6 5" look-controls="pointerLockEnabled:true;hmdEnabled:false" static-body>
-            <a-box material="color: #4CC3D9; opacity: 0; transparent: true; visible: false" position="0 -1.6 0" rotation="0 0 0" scale="3 1 3" static-body></a-box>
+            <a-entity id="scoreBoard" position="0 0.75 -1"></a-entity>
+            <a-box material="color: #4CC3D9; opacity: 0; transparent: true; visible: false" position="0 -1.6 -1" rotation="0 0 0" scale="3 4 3" static-body></a-box>
             <a-map position="0 0 0"></a-map>
         </a-camera>
         <a-sky color="#61bafa"></a-sky>
@@ -108,6 +114,12 @@
             alert("Resetting ball...")
             document.querySelector("#soccerBall").object3D.position.set(0, 0, -5);
         }
+
+        function updateScoreBoard() {
+            var scoreBoard = document.querySelector("#scoreBoard");
+            scoreBoard.setAttribute("text", `value: Team #1: ${team1.points}   Team #2: ${team2.points};align:center`);
+        }
+        updateScoreBoard();
     </script>
 </body>
 
