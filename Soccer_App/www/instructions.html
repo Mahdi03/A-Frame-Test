@@ -7,15 +7,34 @@
     <title>Instructions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/theme.css" />
-    <script src="main.js"></script>
 </head>
 
 <body>
-    <h1>Instructions</h1>
+    <header>Instructions:</header>
     <ol>
-        <li></li>
+        <li>On PC, use WASD or Arrow Keys To Move Around.</li>
+        <li>On PC, use the Mouse to look around.</li>
+        <li>On Mobile, Just tilt your phone to look around (VR Headsets Help For This)</li>
+        <li>Just Hit The Ball With your Body To Kick It.</li>
+        <li>Try To Make It Into The Goal, If You Make It, the score total goes up.</li>
+        <li>Have Fun!!!</li>
     </ol>
     <button redir="soccer.html">Play Now!!!</button>
+    <button redir="https://mahdi03.github.io/A-Frame-Test/Soccer_App/www/soccer.html">Play Online!!!</button>
+    <script>
+        document.querySelectorAll("button").forEach(function(element) {
+            element.onclick = function(event) {
+                var link = event.srcElement.attributes.redir.nodeValue;
+                createAndClickLink(link);
+            }
+        });
+
+        function createAndClickLink(link) {
+            var a = document.createElement("a");
+            a.href = link;
+            a.click();
+        }
+    </script>
 </body>
 
 </html>
