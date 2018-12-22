@@ -14,6 +14,21 @@
     <button redir="instructions.html">Play Now!!</button>
     <button redir="instructions.html">Instructions</button>
     <button onclick="window.close()">Exit</button>
+    <script>
+        document.querySelectorAll("button").forEach(function(element) {
+            element.onclick = function(event) {
+                var link = event.srcElement.attributes.redir.nodeValue;
+                createAndClickLink(link);
+            }
+        });
+
+        function createAndClickLink(link) {
+            var a = document.createElement("a");
+            a.href = link;
+            a.click();
+        }
+
+    </script>
 </body>
 
 </html>

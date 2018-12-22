@@ -15,48 +15,81 @@
 
 <body>
     <script>
-        document.body.onkeydown = function(event) {
-            if (event.key === "r" || event.key === "R") {
-                alert("Resetting");
-                document.querySelector("#soccerBall").setAttribute("position", "0 1.25 -5");
-            }
+        let team1 = {
+            points: 0
         };
-        AFRAME.scenes[0].exitVRBound();
-        AFRAME.scenes[0].exitVRTrueBound();
+        let team2 = {
+            points: 0
+        };
+        //AFRAME.scenes[0].exitVRBound();
+        //AFRAME.scenes[0].exitVRTrueBound();
         registerAframeMap(window.AFRAME);
-    </script>
 
+        function checkBall() {
+            console.log("hello");
+            var ballPos = document.querySelector("#soccerBall").object3D.position;
+            if (ballPos.y < -15) {
+                resetBall();
+            } else if (ballPos.z < -55) {
+                if (ballPos.x < 20 && ballPos.x > -20) {
+                    team2.points++;
+                    console.log("Team #2 Scored A Point, they now have " + team2.points + " points!!! Hooray for them!!");
+                    resetBall();
+                } else {
+                    ballPos.setZ(-55);
+                    console.log("Moved Soccer Ball To Rear Touch Line");
+                }
+            } else if (ballPos.z > 55) {
+                if (ballPos.x < 20 && ballPos.x > -20) {
+                    team1.points++;
+                    console.log("Team #1 Scored A Point, they now have " + team1.points + " points!!! Hooray for them!!");
+                    resetBall();
+                } else {
+                    ballPos.setZ(55);
+                    console.log("Moved Soccer Ball To Front Touch Line");
+                }
+            }
+
+            requestAnimationFrame(checkBall);
+        }
+        requestAnimationFrame(checkBall);
+    </script>
     <a-scene vr-mode-ui="enabled: false" keyboard-shortcuts="enterVR: false" physics="debug: false; restitution: 0.5">
         <a-sphere id="soccerBall" velocity="0 1 1" position="0 0 -5" radius="0.3" color="#EF2E5E" dynamic-body="shape: sphere"></a-sphere>
         <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#000099" dynamic-body></a-cylinder>
         <!--Soccer Field-->
         <a-entity>
-            <a-plane position="0 -0.0001 0" rotation="-90 0 0" width="73" height="110" color="#208a06" static-body></a-plane>
+            <a-plane position="0 -0.0001 0" rotation="-90 0 0" width="73" height="150" color="#208a06" static-body></a-plane>
             <!--Center Line-->
             <a-plane position="0 0.01 0" rotation="-90 0 0" width="73" height="0.25" color="#FFFFFF" static-body></a-plane>
+            <!--Touch Line (Front)-->
+            <a-plane position="0 0.01 -55" rotation="-90 0 0" width="73" height="0.25" color="#FFFFFF" static-body></a-plane>
+            <!--Touch Line (Back)-->
+            <a-plane position="0 0.01 55" rotation="-90 0 0" width="73" height="0.25" color="#FFFFFF" static-body></a-plane>
             <!--Center Circle-->
             <a-circle position="0 0.01 0" rotation="-90 0 0" radius="9.15" color="" static-body></a-circle>
             <a-map position="0 0 -5"></a-map>
 
             <a-plane position="0 0.001 10" rotation="-90 0 0" width="73" height="0.25" color="#ABCCCC" static-body></a-plane>
+
             <!--Right Wall-->
-            <a-box position="36.5 0 0" rotation="0 90 0" height="10" width="110" color="#ABCDEF" static-body></a-box>
+            <a-box position="36.5 0 0" rotation="0 90 0" height="10" width="150" color="#ABCDEF" static-body></a-box>
             <!--Left Wall-->
-            <a-box position="-36.5 0 0" rotation="0 90 0" height="10" width="110" color="#ABCDEF" static-body></a-box>
+            <a-box position="-36.5 0 0" rotation="0 90 0" height="10" width="150" color="#ABCDEF" static-body></a-box>
             <!--Front Wall-->
-            <a-box position="0 0 -55" rotation="0 0 0" height="10" width="73" color="" static-body></a-box>
+            <a-box position="0 0 -75" rotation="0 0 0" height="10" width="73" color="" static-body></a-box>
             <!--Back Wall-->
-            <a-box position="0 0 55" rotation="0 0 0" height="10" width="73" color="" static-body></a-box>
+            <a-box position="0 0 75" rotation="0 0 0" height="10" width="73" color="" static-body></a-box>
             <!--Goal Post 1-->
-            <a-cylinder position="0 0 -40" rotaion="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF"></a-cylinder>
-            <a-cylinder position="0 0 -40" rotaion="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF"></a-cylinder>
-            <a-cylinder position="0 0 -40" rotaion="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF"></a-cylinder>
-            <a-cylinder position="0 0 -40" rotaion="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF"></a-cylinder>
-            <a-cylinder position="0 0 -40" rotaion="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF"></a-cylinder>
-            <a-cylinder position="0 0 -40" rotaion="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF"></a-cylinder>
-            <a-cylinder position="0 0 -40" rotaion="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF"></a-cylinder>
-            <a-cylinder position="0 0 -40" rotaion="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF"></a-cylinder>
-            <a-cylinder position="0 0 -40" rotaion="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF"></a-cylinder>
+            <a-cylinder position="0 0 -40" rotation="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF" static-body></a-cylinder>
+            <a-cylinder position="0 0 -40" rotation="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF" static-body></a-cylinder>
+            <a-cylinder position="0 0 -40" rotation="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF" static-body></a-cylinder>
+            <a-cylinder position="0 0 -40" rotation="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF" static-body></a-cylinder>
+            <a-cylinder position="0 0 -40" rotation="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF" static-body></a-cylinder>
+            <a-cylinder position="0 0 -40" rotation="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF" static-body></a-cylinder>
+            <a-cylinder position="0 0 -40" rotation="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF" static-body></a-cylinder>
+            <a-cylinder position="0 0 -40" rotation="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF" static-body></a-cylinder>
+            <a-cylinder position="0 0 -40" rotation="0 0 0" height="10" width="1" radius="0.2" color="#FFFFFF" static-body></a-cylinder>
         </a-entity>
         <a-camera wasd-controls="acceleration: 200" position="0 1.6 5" look-controls="pointerLockEnabled:true;hmdEnabled:false" static-body>
             <a-box material="color: #4CC3D9; opacity: 0; transparent: true; visible: false" position="0 -1.6 0" rotation="0 0 0" scale="3 1 3" static-body></a-box>
@@ -64,6 +97,19 @@
         </a-camera>
         <a-sky color="#61bafa"></a-sky>
     </a-scene>
+    <script>
+        document.body.onkeydown = function(event) {
+            if (event.key === "r" || event.key === "R") {
+                alert("Resetting");
+                resetBall();
+            }
+        };
+
+        function resetBall() {
+            alert("Resetting ball...")
+            document.querySelector("#soccerBall").object3D.position.set(0, 0, -5);
+        }
+    </script>
 </body>
 
 </html>
